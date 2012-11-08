@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			The latest Luck		
+		</title>
+		<script type="text/javascript" >		
+			function checkAll(){
+				if(checkName() && checkPassword() && checkCPassword()){
+					alert("successful");
+					return false;				
+				}else{
+					//alert("Not success");
+					return false;				
+				}
+			}
+			function checkEmail(){
+				//alert("abc");
+				var pattern=new RegExp("[a-z]+@+[a-z]+.+[a-z]");
+				alert(pattern.test("rajan@gmail.com"));			
+			}
+			function checkName(){
+				//alert("hello world");
+					var nameValue = document.getElementById("user").value;
+					//alert(nameValue.length);
+					if(nameValue.length<6){
+						document.getElementById("userErrorArea").innerHTML="Name should be greater than 6 characters";	
+						return false;				
+					}else{
+						document.getElementById("userErrorArea").innerHTML="";
+						
+					}
+					if(isNumber(nameValue.charAt(0))){
+						//number
+						//alert("inside nan");
+						document.getElementById("userErrorArea").innerHTML="The name cannot start with a number";
+						return false;
+					}else{
+						document.getElementById("userErrorArea").innerHTML="";
+						return true;
+					}
+					return true;
+			}
+			function checkPassword(){
+				var passValue=document.getElementById("pass").value;
+				var cpassValue=document.getElementById("cpass").value;
+				if(passValue.length<6){
+					document.getElementById("passErrorArea").innerHTML="pass should be greater than 6 characters";	
+						return false;
+				}else{
+					document.getElementById("passErrorArea").innerHTML="";
+				}
+				if(!isAlphaNumerics(passValue)){
+					document.getElementById("passErrorArea").innerHTML="password should be alphanumeric";	
+						return false;
+				}
+				document.getElementById("passErrorArea").innerHTML="";
+				return true;
+			}
+			function checkCPassword(){
+				var passValue=document.getElementById("pass").value;
+				var cpassValue=document.getElementById("cpass").value;
+				if(passValue!=cpassValue){
+					document.getElementById("cpassErrorArea").innerHTML="password should be equal.";	
+					return false;			
+				}
+				document.getElementById("cpassErrorArea").innerHTML="";	
+				return true;
+			}
+			
+			function isNumber(a){
+				if(a>=0 && a<=9){
+					return true;
+									
+				}else{
+					return false;				
+				}			
+			}
+			function isAlphaNumerics(checkString) {
+		        var regExp = /^[A-Za-z0-9]$/;
+		        if(checkString!= null && checkString!= "")
+		        {
+		          for(var i = 0; i < checkString.length; i++)
+		          {
+		            if (!checkString.charAt(i).match(regExp))
+		            {
+		              return false;
+		            }
+		          }
+		        }
+		        else
+		        {
+		          return false;
+		        }
+		        return true;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<h2>The Main Header Of The Page</h2>
+				<!-- An Image could be placed Here-->
+				<div id="navigation">
+					<!-- an unordered list of anchors/menu is to be placed here-->				
+				</div>	
+			</div>
+			
+			<div id="content">
+				<form action="" method="POST" onsubmit="return checkAll()">
+					<input type="hidden" id="name" value="rajan prasad upadhyay"/>
+					Email:<br/>
+					<input type="text" id="email" onblur="checkEmail()"/><br/>
+					<label>UserName:</label><br/>
+							<input type="text" id="user" onblur="checkName()" />
+							<div id="userErrorArea" style="color:red;" ></div><br/>
+					<label>Password:</label><br/>
+							<input type="password" id="pass" onblur="checkPassword()"/>
+							<div id="passErrorArea" style="color:red;"  ></div>							
+							<br/>
+					<label>Conform Password:</label><br/>
+							<input type="password" id="cpass" onblur="checkCPassword()"/>
+							<div id="cpassErrorArea" style="color:red;" ></div>							
+							<br/>
+					<input type="submit" value="Signup Now" />
+				</form>
+			</div>
+			
+			<div id="sidebar">
+				The sidebar menu links are displayed here.			
+			</div>
+			
+			<div id="footer">
+				All Copyrights &copy; reserved to rajan prasad upadhyay.			
+			</div>		
+		</div>
+	</body>
+</html>
